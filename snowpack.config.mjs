@@ -18,8 +18,10 @@ export default {
   },
   devOptions: {
     /* ... */
+    
   },
   buildOptions: {
     /* ... */
+  
   },
 };
