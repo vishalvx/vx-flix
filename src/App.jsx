@@ -1,26 +1,23 @@
 import React from 'react';
-
+//hooks
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { MovieList } from './components/MovieList';
-import MovieDetail from './pages/MovieDetail';
+
+
+//components
+import Home from './components/Home'
 
 
 //styles
-import { GlobalStyles } from './components/GlobalStyles';
+import { GlobalStyles } from './GlobalStyles';
 
 function App() {
   return (
-    <Router>
       <div className="App">
         <header className="App-header">
-          <Switch>
-            <Route path="/moviedetail/:id" component={MovieDetail} />
-            <Route path="/" component={MovieList} />
-          </Switch>
+          <Home/>
           <GlobalStyles/>
         </header>
       </div>
-    </Router>
   );
 }
 

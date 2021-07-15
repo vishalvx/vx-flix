@@ -2,7 +2,7 @@
 
 const API_URL = 'https://api.themoviedb.org/3/';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = import.meta.env.SNOWPACK_PUBLIC_API_KEY;
 
 // For seaching movie
 const SEARCH_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;

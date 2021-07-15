@@ -9,7 +9,7 @@ import {
   LOGIN_URL,
   SESSION_ID_URL,
   API_KEY,
-} from './Config';
+} from './config';
 
 /*
 fetchMovies : if user serach movie then it will store fist condition in end point or default popular page
