@@ -17,7 +17,7 @@ import {
   POSTER_SIZE,
   IMAGE_BASE_URL,
   POPULAR_BASE_URL,
-} from '../config';
+} from '../Config';
 
 const Home = () => {
   // this i custom hook for fetching home data and return { movies, loading, error } object
