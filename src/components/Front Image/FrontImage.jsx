@@ -2,7 +2,7 @@ import React from 'react';
 //styles
 import { Wrapper, Content, Text } from '../Front Image/FrontImage.style';
 
-export const FrontImage = ({ image, text, title }) => {
+const FrontImage = ({ image, text, title }) => {
   return (
     <Wrapper image={image}>
       <Content>
@@ -14,3 +14,4 @@ export const FrontImage = ({ image, text, title }) => {
     </Wrapper>
   );
 };
+export default FrontImage;

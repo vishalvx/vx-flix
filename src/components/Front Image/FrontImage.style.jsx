@@ -30,14 +30,12 @@ export const Content = styled.div`
   margin: 0 auto;
 `;
 export const Text = styled.div`
-
-
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.2);
+  max-width: 50vw;
   position: absolute;
   margin-right: 5%;
   bottom: 1rem;
-  
 
   h1 {
     padding: 0.3rem;
@@ -53,5 +51,8 @@ export const Text = styled.div`
     @media screen and (max-width: 720px) {
       font-size: var(--fontSuperSmall);
     }
+  }
+  @media screen and (max-width: 720px) {
+    max-width: 100%;
   }
 `;
