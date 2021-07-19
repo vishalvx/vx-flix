@@ -8,7 +8,6 @@ import API from '../API';
 //sources
 import noImage from '../image/no_image.jpg';
 
-
 //initail state for reset the state
 const initailState = {
   page: 0,
@@ -21,6 +20,9 @@ export const useHomeFetch = () => {
   const [movies, setMovies] = useState(initailState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  console.log(searchTerm);
 
   const fetchMovies = async (page, searchTerm = '') => {
     try {
@@ -34,7 +36,7 @@ export const useHomeFetch = () => {
       setMovies((prev) => ({
         ...movies,
         results:
-          page > 1
+          page >= 1
             ? [...prev.results, ...moviesResult.results]
             : [...moviesResult.results],
       }));
@@ -44,13 +46,15 @@ export const useHomeFetch = () => {
   };
 
   useEffect(() => {
-    fetchMovies(1);
-  }, []);
+    setMovies(initailState);
+    fetchMovies(1, searchTerm);
+  }, [searchTerm]);
 
   return {
     movies,
     loading,
     error,
+    setSearchTerm,
+    searchTerm,
   };
 };
-

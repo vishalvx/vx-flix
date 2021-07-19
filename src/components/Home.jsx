@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 
 // custom Hooks
 import { useHomeFetch } from '../components/useHomefetch';
@@ -9,6 +8,8 @@ import Header from './Header/Header';
 import FrontImage from './Front Image/FrontImage';
 import Grid from './Grid/Grid';
 import ThumbnailImage from './ThumbnailImage/ThumbnailImage';
+import Spinner from './Spinner/Spinner';
+import SearchBar from './SearchBar/SearchBar';
 
 //sources
 import noImage from '../image/no_image.jpg';
@@ -21,7 +22,7 @@ import {
 
 const Home = () => {
   // this i custom hook for fetching home data and return { movies, loading, error } object
-  const { movies, loading, error } = useHomeFetch();
+  const { movies, loading, error, setSearchTerm, searchTerm } = useHomeFetch();
 
   console.log(movies);
 
@@ -29,7 +30,7 @@ const Home = () => {
     <>
       <Header />
 
-      {movies.results[0] ? (
+      {!searchTerm && movies.results[0] ? (
         <FrontImage
           title={movies.results[0].title}
           image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies.results[0].backdrop_path}`}
@@ -37,20 +38,24 @@ const Home = () => {
         />
       ) : null}
 
-      <Grid header="Popular Movies">
+      <SearchBar setSearchTerm={setSearchTerm} />
+      <Grid header={searchTerm ? `Search Reasults For ${searchTerm}`:"Popular Movies"}>
         {movies.results.map((movie) => (
           <ThumbnailImage
             image={
-              movie.poster_path?
-              `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-              :noImage
+              movie.poster_path
+                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                : noImage
             }
             movieId={movie.id}
             key={movie.id}
+            title={movie.title}
             clickable
           />
         ))}
       </Grid>
+
+      {/* <Spinner/> */}
     </>
   );
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 //styles
-import { Image } from './ThumbnailImage.style';
+import { Image,Wrapper } from './ThumbnailImage.style';
 
-const ThumbnailImage = ({ image, clickable, movieId }) => {
+const ThumbnailImage = ({ image, clickable, movieId,title }) => {
   return (
-    <div>
+    <Wrapper>
       <Image src={image} alt="Thumbnail-poster" />
-    </div>
+      <h4>{title}</h4>
+    </Wrapper>
   );
 };
 export default ThumbnailImage;

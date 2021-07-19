@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+
+
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.3) 50%,
       rgba(0, 0, 0, 0.7) 97%
     ),
     url(${({ image }) => image});
+
+
+    
   background-size: cover;
   background-position: 50% 30%;
   height: 60vh;

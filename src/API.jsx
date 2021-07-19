@@ -22,7 +22,7 @@ fetchMovie : for movie detail page it will get movie data
 const apiSettings = {
   fetchMovies: async (searchTerm, page) => {
     const endpoint = searchTerm
-      ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
+      ? `${SEARCH_URL}${searchTerm}&page=${page}`
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
