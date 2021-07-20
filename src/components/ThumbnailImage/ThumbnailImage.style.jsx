@@ -10,12 +10,14 @@ export const Image = styled.img`
   width: 100%;
   max-width: 720px;
   object-fit: cover;
+  border: 3px solid var(--darkGray);
   border-radius: 1rem;
+
   cursor: pointer;
   transition: all 0.5s;
   animation: animateGrid 0.5s;
 
-  :hover {
+  :hover { 
     opacity: 0.95;
     box-shadow: 0.5rem 0.5rem 0.9rem 0.44rem rgba(0, 0, 0, 0.4);
   }

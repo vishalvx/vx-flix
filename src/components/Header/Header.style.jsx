@@ -14,6 +14,10 @@ export const Content = styled.div`
   justify-content: space-between;
   max-width: 90%;
   margin: 0 auto;
+  .logo{
+    font-family: 'Antic Slab', serif;
+    font-weight: 600;
+  }
 `;
 
 export const List = styled.ul`

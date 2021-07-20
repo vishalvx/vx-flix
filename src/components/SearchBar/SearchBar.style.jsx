@@ -16,6 +16,8 @@ export const Content = styled.div`
     min-width: 40vw;
     background-color: var(--darkGray);
     border-radius: 0.8rem;
+    border:none;
+    
     color: var(--white);
     font-size: 1rem;
 

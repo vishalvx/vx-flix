@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         --fontSuperBig:2.4rem;
         --fontBig:2rem;
         --fontMed:1.8rem;
-        --fontSmall:1.5rem;
+        --fontSmall:1.3rem;
         --fontSuperSmall:0.7rem;
     }
 
@@ -30,17 +30,22 @@ export const GlobalStyles = createGlobalStyle`
     h1{
         font-size: var(--fontSuperBig);
         font-weight: 600;
+        font-family: 'Abel', sans-serif;
     }
     h2{
         font-size: var(--fontMed);
         font-weight: 600;
+        font-family: 'Abel', sans-serif;
     }
     h3{
         font-size: var(--fontSmall);
         font-weight: 400;
+        
+        font-family: 'Montserrat', sans-serif;
     }
-    p{
+    p,h4,h5,h6,li{
         font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
     }
 
 
