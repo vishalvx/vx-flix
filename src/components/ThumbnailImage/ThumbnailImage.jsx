@@ -1,12 +1,16 @@
 import React from 'react';
-//styles
-import { Image,Wrapper } from './ThumbnailImage.style';
 
-const ThumbnailImage = ({ image, clickable, movieId,title }) => {
+import { Link } from 'react-router-dom';
+//styles
+import { Image, Wrapper } from './ThumbnailImage.style';
+
+const ThumbnailImage = ({ image, clickable, movieId, title }) => {
   return (
     <Wrapper>
-      <Image src={image} alt="Thumbnail-poster" />
-      <h4>{title}</h4>
+      <Link to={`/${movieId}`}>
+        <Image src={image} alt="Thumbnail-poster" />
+        <h4>{title}</h4>
+      </Link>
     </Wrapper>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
-
 // custom Hooks
-import { useHomeFetch } from '../components/useHomefetch';
+import { useHomeFetch } from '../hooks/useHomefetch';
 
 //components
 import Header from './Header/Header';
@@ -32,7 +31,7 @@ const Home = () => {
     setIsLoadingMore,
   } = useHomeFetch();
 
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <>
@@ -53,17 +52,17 @@ const Home = () => {
         }
       >
         {movies.results.map((movie) => (
-          <ThumbnailImage
-            image={
-              movie.poster_path
-                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                : noImage
-            }
-            movieId={movie.id}
-            key={movie.id + Math.random() * 100}
-            title={movie.title}
-            clickable
-          />
+            <ThumbnailImage
+              image={
+                movie.poster_path
+                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                  : noImage
+              }
+              movieId={movie.id}
+              key={movie.id + Math.random() * 100}
+              title={movie.title}
+              clickable
+            />
         ))}
       </Grid>
 
