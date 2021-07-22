@@ -47,6 +47,10 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1rem;
         font-family: 'Montserrat', sans-serif;
     }
+    a{
+        text-decoration: none;
+        color:inherit;
+    }
 
 
 

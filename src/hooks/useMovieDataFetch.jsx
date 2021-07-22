@@ -16,13 +16,20 @@ export const useMovieDataFetch = ({ movieId }) => {
       try {
         setLoading(true);
         setError(false);
+        
         const movieResult = await API.fetchMovie(movieId);
+        const credits = await API.fetchCredits(movieId);
 
-        // const movie ={
-        //   ...movie,
+        // get directors from credits
+        const directors = credits.crew.filter(
+          (member) => member.job === 'Director',
+        );
 
-        // }
-        // console.log(movieResult);
+        setMovie({
+          ...movieResult,
+          actor: credits.cast,
+          directors: directors,
+        });
         setLoading(false);
       } catch (error) {
         setError(true);
