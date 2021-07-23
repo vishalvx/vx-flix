@@ -61,7 +61,7 @@ const Home = () => {
               movieId={movie.id}
               key={movie.id + Math.random() * 100}
               title={movie.title}
-              clickable
+              clickable={true}
             />
         ))}
       </Grid>

@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         --fontSuperBig:2.4rem;
         --fontBig:2rem;
         --fontMed:1.8rem;
-        --fontSmall:1.3rem;
+        --fontSmall:1.0rem;
         --fontSuperSmall:0.7rem;
     }
 
@@ -47,9 +47,10 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1rem;
         font-family: 'Montserrat', sans-serif;
     }
-    a{
+    a,span{
         text-decoration: none;
         color:inherit;
+        font-family: 'Montserrat', sans-serif;
     }
 
 
