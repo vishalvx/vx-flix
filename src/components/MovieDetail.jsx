@@ -5,13 +5,15 @@ import { useMovieDataFetch } from '../hooks/useMovieDataFetch';
 //components
 import Header from './Header/Header';
 import Spinner from './Spinner/Spinner';
+import Grid from './Grid/Grid';
 import BreadCrum from './BreadCrumb/BreadCrumb';
-import MovieInfo from "./MovieInfo/MovieInfo"
+import MovieInfo from './MovieInfo/MovieInfo';
+import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
+import Actor from './Actor/Actor';
 
 //Source
 import { BACKDROP_SIZE, POSTER_SIZE, IMAGE_BASE_URL } from '../Config';
 import NoImage from '../image/no_image.jpg';
-
 
 const MovieDetail = () => {
   const { movieId } = useParams();
@@ -28,7 +30,27 @@ const MovieDetail = () => {
     <>
       <Header />
       <BreadCrum movieTitle={movie.original_title} />
-      <MovieInfo movie={movie}/>
+      <MovieInfo movie={movie} />
+      <MovieInfoBar
+        time={movie.runtime}
+        budget={movie.budget}
+        revenue={movie.revenue}
+      />
+      <Grid header="Actors">
+        {movie.actor &&
+          movie.actor.map((actor) => (
+            <Actor
+              key={actor.credit_id}
+              charactor={actor.character}
+              name={actor.name}
+              imageUrl={
+                actor.profile_path
+                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                  : NoImage
+              }
+            />
+          ))}
+      </Grid>
     </>
   );
 };
