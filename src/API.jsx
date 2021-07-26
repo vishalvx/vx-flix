@@ -2,6 +2,7 @@ import {
   API_URL,
   SEARCH_URL,
   POPULAR_BASE_URL,
+  POPULAR_WEB_BASE_URL,
   IMAGE_BASE_URL,
   BACKDROP_SIZE,
   POSTER_SIZE,
@@ -9,6 +10,7 @@ import {
   LOGIN_URL,
   SESSION_ID_URL,
   API_KEY,
+  SEARCH_WEB_URL,
 } from './Config';
 
 /*
@@ -26,6 +28,7 @@ const apiSettings = {
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
+
   fetchMovie: async (movieId) => {
     const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
     return await (await fetch(endpoint)).json();
@@ -33,6 +36,22 @@ const apiSettings = {
 
   fetchCredits: async (movieId) => {
     const creditsEndpoint = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
+    return await (await fetch(creditsEndpoint)).json();
+  },
+
+  fetchWebShows: async (searchTerm, page) => {
+    const endpoint = searchTerm
+      ? `${SEARCH_WEB_URL}${searchTerm}&page=${page}`
+      : `${POPULAR_WEB_BASE_URL}&page=${page}`;
+    return await (await fetch(endpoint)).json();
+  },
+  fetchWebShow: async (webId) => {
+    const endpoint = `${API_URL}tv/${webId}?api_key=${API_KEY}`;
+    return await (await fetch(endpoint)).json();
+  },
+
+  fetchWebCredits: async (webId) => {
+    const creditsEndpoint = `${API_URL}tv/${webId}/credits?api_key=${API_KEY}`;
     return await (await fetch(creditsEndpoint)).json();
   },
 

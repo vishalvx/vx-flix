@@ -6,9 +6,11 @@ const API_KEY = import.meta.env.SNOWPACK_PUBLIC_API_KEY;
 
 // For seaching movie
 const SEARCH_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
+const SEARCH_WEB_URL = `${API_URL}search/tv?api_key=${API_KEY}&language=en-US&query=`;
 
 // for list popular movie
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
+const POPULAR_WEB_BASE_URL = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US`;
 
 // for Movies poster and background
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
@@ -33,4 +35,6 @@ export {
   LOGIN_URL,
   SESSION_ID_URL,
   API_KEY,
+  POPULAR_WEB_BASE_URL,
+  SEARCH_WEB_URL,
 };

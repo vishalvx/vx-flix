@@ -1,6 +1,6 @@
 import React from 'react';
 // custom Hooks
-import { useHomeFetch } from '../hooks/useHomefetch';
+import { useWebShowFetch } from '../hooks/useWebShowFetch';
 
 //components
 import Header from './Header/Header';
@@ -17,62 +17,57 @@ import {
   BACKDROP_SIZE,
   POSTER_SIZE,
   IMAGE_BASE_URL,
-  POPULAR_BASE_URL,
 } from '../Config';
 
-const Home = () => {
-  // this i custom hook for fetching home data and return { movies, loading, error } object
+const WebShowHome = () => {
   const {
-    movies,
+    webShows,
     loading,
-    error,
     setSearchTerm,
     searchTerm,
     setIsLoadingMore,
-  } = useHomeFetch();
-
-  // console.log(movies);
+  } = useWebShowFetch();
 
   return (
     <>
-      <Header page={'MovieHome'} />
+      <Header page={'WebShowPage'} />
 
-      {!searchTerm && movies.results[0] ? (
+      {!searchTerm && webShows.results[0] ? (
         <FrontImage
-          title={movies.results[0].title}
-          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies.results[0].backdrop_path}`}
-          text={movies.results[0].overview}
+          title={webShows.results[0].title}
+          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${webShows.results[0].backdrop_path}`}
+          text={webShows.results[0].overview}
         />
       ) : null}
 
       <SearchBar setSearchTerm={setSearchTerm} />
       <Grid
         header={
-          searchTerm ? `Search Reasults For ${searchTerm}` : 'Popular Movies'
+          searchTerm ? `Search Reasults For ${searchTerm}` : 'Popular Web Show'
         }
       >
-        {movies.results.map((movie) => (
+        {webShows.results.map((webShow) => (
           <ThumbnailImage
             image={
-              movie.poster_path
-                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+              webShow.poster_path
+                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${webShow.poster_path}`
                 : noImage
             }
-            page={"MoviePage"}
-            movieId={movie.id}
-            key={movie.id + Math.random() * 100}
-            title={movie.title}
+            movieId={webShow.id}
+            key={webShow.id + Math.random() * 100}
+            title={webShow.name}
             clickable={true}
+            page={"WebShowPage"}
           />
         ))}
       </Grid>
 
       {loading && <Spinner />}
 
-      {movies.page < movies.total_pages && !loading && (
+      {webShows.page < webShows.total_pages && !loading && (
         <LoadMore text="Load More" callback={() => setIsLoadingMore(true)} />
       )}
     </>
   );
 };
-export default Home;
+export default WebShowHome;

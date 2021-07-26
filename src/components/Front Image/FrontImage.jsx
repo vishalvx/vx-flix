@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 //styles
 import { Wrapper, Content, Text } from '../Front Image/FrontImage.style';
 
@@ -14,4 +15,11 @@ const FrontImage = ({ image, text, title }) => {
     </Wrapper>
   );
 };
+
+FrontImage.propTypes = {
+  image: PropTypes.string,
+  text: PropTypes.string,
+  title: PropTypes.string,
+};
+
 export default FrontImage;

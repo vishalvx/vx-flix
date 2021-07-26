@@ -1,24 +1,23 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 //Hook
-import { useMovieDataFetch } from '../hooks/useMovieDataFetch';
+import { useWebDataFetch } from '../hooks/useWebDataFetch';
 //components
 import Header from './Header/Header';
 import Spinner from './Spinner/Spinner';
 import Grid from './Grid/Grid';
 import BreadCrumb from './BreadCrumb/BreadCrumb';
-import MovieInfo from './MovieInfo/MovieInfo';
-import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
+import WebShowInfo from './WebShowInfo/WebShowInfo';
+import WebShowInfoBar from './WebShowInfoBar/WebShowInfoBar';
 import Actor from './Actor/Actor';
 
 //Source
-import { BACKDROP_SIZE, POSTER_SIZE, IMAGE_BASE_URL } from '../Config';
+import {  POSTER_SIZE, IMAGE_BASE_URL } from '../Config';
 import NoImage from '../image/no_image.jpg';
 
-const MovieDetail = () => {
-  const { movieId } = useParams();
-  const { movie, error, loading } = useMovieDataFetch({ movieId });
-  // console.log(movie);
+const WebShowDetail = () => {
+  const { webId } = useParams();
+  const { webShow, error, loading } = useWebDataFetch({ webId });
 
   if (loading) {
     return <Spinner />;
@@ -28,17 +27,17 @@ const MovieDetail = () => {
   }
   return (
     <>
-      <Header />
-      <BreadCrumb movieTitle={movie.original_title} />
-      <MovieInfo movie={movie} />
-      <MovieInfoBar
-        time={movie.runtime}
-        budget={movie.budget}
-        revenue={movie.revenue}
+      <Header page={'WebShowPage'} />
+      <BreadCrumb movieTitle={webShow.name} page={'WebShowPage'} />
+      <WebShowInfo webShow={webShow} />
+      <WebShowInfoBar
+        time={webShow.episode_run_time}
+        episodes={webShow.number_of_episodes}
+        seasons={webShow.number_of_seasons}
       />
       <Grid header="Actors">
-        {movie.actor &&
-          movie.actor.map((actor) => (
+        {webShow.actor &&
+          webShow.actor.map((actor) => (
             <Actor
               key={actor.credit_id}
               charactor={actor.character}
@@ -54,4 +53,4 @@ const MovieDetail = () => {
     </>
   );
 };
-export default MovieDetail;
+export default WebShowDetail;

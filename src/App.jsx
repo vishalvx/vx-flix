@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import MovieDetail from './components/MovieDetail';
+import WebShowHome from './components/WebShowHome';
+import WebShowDetail from "./components/WebShowDetail";
 
 //styles
 import { GlobalStyles } from './GlobalStyles';
@@ -13,13 +15,20 @@ import { GlobalStyles } from './GlobalStyles';
 const App = () => (
   <Router>
     <Switch>
+      
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/:movieId">
+      <Route exact path="/WebShowHome">
+        <WebShowHome />
+      </Route>
+      <Route exact path="/:movieId">
         <MovieDetail />
       </Route>
-      <Route path="/*" >
+      <Route exact path="/WebShowHome/:webId">
+        <WebShowDetail />
+      </Route>
+      <Route path="/*">
         <NotFound />
       </Route>
     </Switch>

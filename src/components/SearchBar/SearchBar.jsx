@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+
 //styles
 import { Wrapper, Content } from './SearchBar.style';
 //source
@@ -15,7 +17,7 @@ const SearchBar = ({ setSearchTerm }) => {
       initial.current = false;
       return;
     }
-    // adding timer delay for fetching data    
+    // adding timer delay for fetching data
     const timer = setTimeout(() => {
       setSearchTerm(search);
     }, 500);
@@ -39,6 +41,10 @@ const SearchBar = ({ setSearchTerm }) => {
       </Content>
     </Wrapper>
   );
+};
+
+SearchBar.propTypes = {
+  setSearchTerm: PropTypes.func,
 };
 
 export default SearchBar;
