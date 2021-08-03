@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 
 import API from '../API';
 
+//Helpers
+import { getFromSessionStorage } from '../Helper';
+
 //sources
 import noImage from '../image/no_image.jpg';
 
@@ -46,6 +49,15 @@ export const useHomeFetch = () => {
   };
 
   useEffect(() => {
+    //when we in search , we don't store movies data in session storage
+    if (searchTerm) {
+      const sessionState = getFromSessionStorage('HomeMovies');
+      if (sessionState) {
+        setMovies(sessionState);
+        return;
+      }
+    }
+
     setMovies(initailState);
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
@@ -57,6 +69,10 @@ export const useHomeFetch = () => {
     setIsLoadingMore(false);
   }, [isLoadingMore]);
 
+  //this useEffect for set the session storage o intital render
+  useEffect(() => {
+    sessionStorage.setItem('HomeMovies', JSON.stringify(movies));
+  }, [movies]);
   return {
     movies,
     loading,

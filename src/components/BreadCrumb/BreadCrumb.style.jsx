@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: var(--darkGray);
   color: white;
   width: 100%;
-  height: 1.5rem;
+  height: 2rem;
 `;
 export const Content = styled.div`
   display: flex;
@@ -14,5 +14,8 @@ export const Content = styled.div`
   font-size: var(--fontSmall);
   span {
     padding: 3px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 75%;
   }
 `;

@@ -49,4 +49,15 @@ export const Text = styled.div`
   }
   .genres > li {
   }
+  @media screen and (max-width: 768px) {
+    * {
+      font-size: 90%;
+    }
+    h1 {
+      font-size: var(--fontMed);
+    }
+    h3 {
+      font-size: var(--fontSmall);
+    }
+  }
 `;

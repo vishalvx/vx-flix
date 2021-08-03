@@ -2,6 +2,8 @@ import React from 'react';
 
 //Hooks
 import { useState, useEffect } from 'react';
+//Helper
+import { getFromSessionStorage } from '../Helper';
 
 //sources
 import API from '../API';
@@ -44,6 +46,15 @@ export const useWebShowFetch = () => {
   };
 
   useEffect(() => {
+    //when we in search , we don't store webshow data in session storage
+    if (searchTerm) {
+      const sessionState = getFromSessionStorage('HomeWebShows');
+      if (sessionState) {
+        setMovies(sessionState);
+        return;
+      }
+    }
+
     setWebShows(initailState);
     fetchWebShows(1, searchTerm);
   }, [searchTerm]);
@@ -54,6 +65,11 @@ export const useWebShowFetch = () => {
     fetchWebShows(webShows.page + 1, searchTerm);
     setIsLoadingMore(false);
   }, [isLoadingMore]);
+
+  //this useEffect for set the session storage intital render
+  useEffect(() => {
+    sessionStorage.setItem('HomeWebShows', JSON.stringify(webShows));
+  }, [webShows]);
 
   return {
     webShows: webShows,

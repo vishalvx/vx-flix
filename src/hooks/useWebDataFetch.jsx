@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 //Source
 import API from '../API';
 
+//Helpers
+import { getFromSessionStorage } from '../Helper';
+
 export const useWebDataFetch = ({ webId }) => {
   const [webShow, setWebShow] = useState({});
   const [error, setError] = useState(false);
@@ -32,8 +35,21 @@ export const useWebDataFetch = ({ webId }) => {
         setError(true);
       }
     };
+
+    //to get Webshow Data in session Storage
+    const sessionState = getFromSessionStorage(webId);
+    if (sessionState) {
+      setWebShow(sessionState);
+      setLoading(false);
+      return;
+    }
+
     fetchWebData();
   }, [webId]);
 
+  //to Store Webshow Data in session Storage
+  useEffect(() => {
+    sessionStorage.setItem(webId, JSON.stringify(webShow));
+  }, [webShow]);
   return { webShow, error, loading };
 };
